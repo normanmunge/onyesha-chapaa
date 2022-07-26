@@ -15,3 +15,4 @@ This repository contains the codebase of Farmspeak's mobile application. It prov
 Below is the folder structure:
 
 - `App.tsx`: Main component that starts your whole app.
+- Components: Folder containing our split components
