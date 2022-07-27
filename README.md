@@ -16,4 +16,5 @@ Below is the folder structure:
 
 - `App.tsx`: Main component that starts your whole app.
 - Components: Folder containing our split components
+  - Buttons - Holds reusable button components
 - Screens: Folder containing our full screen pages
