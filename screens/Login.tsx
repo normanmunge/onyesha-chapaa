@@ -1,11 +1,12 @@
 import { View, TextInput, Text } from 'react-native';
+import Button from '../components/buttons/button';
 
 function LoginScreen() {
   return (
     <View>
       <TextInput /> {/* TODO: Create custom form input: email/phone */}
       <TextInput /> {/* TODO: Create custom form input: password */}
-      LOGIN BUTTONS {/* TODO: Customise button */}
+      <Button>LOGIN</Button>
       <Text /> {/* create new account */}
       <Text /> {/* forgot password */}
     </View>
