@@ -1,6 +1,6 @@
-# Farmspeak React Native Mobile Application
+# Onyesha Chapaa React Native Mobile Application
 
-This repository contains the codebase of Farmspeak's mobile application. It provides a clear and organized structure, core dependencies, of the application. The application is built using the React Native framing using Typescript.
+This repository contains the codebase of Onyesha Chapaa mobile application - a simple daily expense tracker application. It provides a clear and organized structure, core dependencies, of the application. The application is built using the React Native framing using Typescript.
 
 ## Prerequisites
 
@@ -16,3 +16,4 @@ Below is the folder structure:
 
 - `App.tsx`: Main component that starts your whole app.
 - Components: Folder containing our split components
+- Screens: Folder containing our full screen pages
