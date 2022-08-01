@@ -4,7 +4,7 @@ type ButtonProps = {
   //text: string;
   //rest of the props
 };
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
   const { btnInnerContainer, btnOutterContainer, btnPressed, btnText } = styles;
   const onPressHandler = () => {
     console.log('PRESSED!');
@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   );
 };
 
-export default Button;
+export default PrimaryButton;
 
 const styles = StyleSheet.create({
   btnOutterContainer: {
