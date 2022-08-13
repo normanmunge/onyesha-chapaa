@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import Colors from '../../constants/colors';
 
 type ButtonProps = {
   //text: string;
@@ -32,13 +33,13 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   btnInnerContainer: {
-    backgroundColor: 'green',
+    backgroundColor: Colors.primary500,
     paddingHorizontal: 16,
     paddingVertical: 8,
     elevation: 2,
   },
   btnText: {
-    color: '#fff',
+    color: Colors.white,
     textAlign: 'center',
   },
   btnPressed: {
