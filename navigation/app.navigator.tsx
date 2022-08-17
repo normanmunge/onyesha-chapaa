@@ -8,11 +8,15 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='TabNavigator' component={TabNavigator} />
+        <Stack.Screen
+          name='TabNavigator'
+          component={TabNavigator}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name='Manage Expense'
           component={ManageExpenseScreen}
-          options={{}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

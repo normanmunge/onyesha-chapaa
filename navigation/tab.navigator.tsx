@@ -7,8 +7,16 @@ const Stack = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='RecentExpenses' component={RecentExpensesScreen} />
-      <Stack.Screen name='AllExpenses' component={AllExpensesScreen} />
+      <Stack.Screen
+        name='RecentExpenses'
+        component={RecentExpensesScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='AllExpenses'
+        component={AllExpensesScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
