@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 
-const RecentExpenses = () => {
+const RecentExpensesScreen = () => {
   return (
     <View>
       <Text>This is the screen to view recent expenses</Text>
@@ -8,4 +8,4 @@ const RecentExpenses = () => {
   );
 };
 
-export default RecentExpenses;
+export default RecentExpensesScreen;
