@@ -1,5 +1,5 @@
 import { View, TextInput, Text } from 'react-native';
-import PrimaryButton from '../components/buttons/primary-button';
+import PrimaryButton from '../../components/ui/buttons/primary-button';
 
 function LoginScreen() {
   return (
