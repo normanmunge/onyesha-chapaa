@@ -33,21 +33,6 @@ export const theme = {
   fonts: {
     fontFamily: 'museo-sans',
   },
-  spacing: {
-    flex: 1,
-    // paddingHorizontal: 30,
-    // paddingTop: 140,
-  },
-  screenContainer: {
-    flex: 1,
-    backgroundColor: colors.white,
-    paddingHorizontal: 30,
-    paddingTop: 140,
-  },
-  layout: {
-    paddingHorizontal: 30,
-    paddingTop: 140,
-  },
 };
 
 //incase we want to switch between dark and light mode
