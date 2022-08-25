@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { GlobalStyles } from '../constants/styles';
 import { Ionicons } from '@expo/vector-icons';
 
 import AllExpensesScreen from '../screens/expenses/all';
 import RecentExpensesScreen from '../screens/expenses/recent';
+import { theme } from '../constants/theme';
 const Stack = createBottomTabNavigator();
 
 enum TAB_ICON {
@@ -18,12 +18,12 @@ const stackNavigatorOptions = ({ route }: { route: any }) => {
   const iconName = Object.values(TAB_ICON)[routeIndex];
 
   return {
-    headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+    headerStyle: { backgroundColor: theme.colors.primary },
     headerTintColor: 'white',
     tabBarStyle: {
-      backgroundColor: GlobalStyles.colors.primary500,
+      backgroundColor: theme.colors.primary,
     },
-    tabBarActiveTintColor: GlobalStyles.colors.accent500,
+    tabBarActiveTintColor: theme.colors.accent,
     tabBarIcon: ({ color, size = 20 }: { color: string; size: number }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
