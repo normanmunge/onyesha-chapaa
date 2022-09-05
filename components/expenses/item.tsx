@@ -1,30 +1,48 @@
 import { Pressable, View, Text, StyleSheet } from 'react-native';
 import { theme } from '../../constants/theme';
+import { getFormattedDate } from '../../utils/date';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
 interface expenseItemProps {
   description?: string;
   amount?: number;
-  date?: any;
+  date?: Date;
+  id: any;
 }
 
 const ExpenseItem: React.FC<expenseItemProps> = ({
+  id,
   description,
   amount,
-  date,
+  date = new Date(Date.now()),
 }) => {
+  const navigation = useNavigation();
+
   const {
     itemContainer,
     itemText,
     descriptionText,
     amountContainer,
     amountText,
+    tapped,
   } = styles;
+
+  function expensePressHandler() {
+    navigation.navigate('Manage Expense', {
+      expenseId: id,
+    });
+  }
+
   return (
-    <Pressable>
+    <Pressable
+      onPress={expensePressHandler}
+      style={({ pressed }) => pressed && tapped}
+    >
       <View style={itemContainer}>
         <View>
           <Text style={[itemText, descriptionText]}>{description}</Text>
-          <Text style={itemText}>{date}</Text>
+          <Text style={itemText}>{getFormattedDate(date)}</Text>
         </View>
         <View style={amountContainer}>
           <Text style={amountText}>{amount}</Text>
@@ -68,9 +86,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
+    minWidth: 80,
   },
   amountText: {
     color: theme.colors.primary,
     fontWeight: 'bold',
+  },
+  tapped: {
+    opacity: 0.75,
   },
 });
