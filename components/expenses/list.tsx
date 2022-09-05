@@ -1,9 +1,9 @@
 import { Text, FlatList } from 'react-native';
+import ExpenseItem from './item';
 
 const renderExpenseItem = (itemData: any) => {
   const { item } = itemData;
-  const { description } = item;
-  return <Text>{description}</Text>;
+  return <ExpenseItem {...item} />;
 };
 
 interface listProps {
