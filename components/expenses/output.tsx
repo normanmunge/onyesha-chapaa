@@ -37,7 +37,7 @@ const DUMMY_EXPENSES: DUMMY_EXPENSES_TYPE[] = [
     id: 'e4',
     description: 'Food',
     amount: 500,
-    date: new Date('2022-08-23'),
+    date: new Date('2022-11-23'),
   },
 ];
 const ExpensesOutput: React.FC<outputProps> = ({ expenses, period }) => {
@@ -55,7 +55,9 @@ export default ExpensesOutput;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    paddingHorizontal: 24,
+    paddingTop: 24,
+    paddingBottom: 0,
     backgroundColor: theme.colors.primary_dark,
   },
 });

@@ -14,7 +14,7 @@ const ExpensesSummary: React.FC<summaryProps> = ({ expenses, period }) => {
   return (
     <View style={container}>
       <Text style={periodText}>{period}</Text>
-      <Text style={sumText}>{expensesSum.toFixed(2)} KES</Text>
+      <Text style={sumText}>{expensesSum} KES</Text>
     </View>
   );
 };
