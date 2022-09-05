@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AllExpensesScreen from '../screens/expenses/all';
 import RecentExpensesScreen from '../screens/expenses/recent';
 import { theme } from '../constants/theme';
+import IconButton from '../components/ui/buttons/icon-button';
 const Stack = createBottomTabNavigator();
 
 enum TAB_ICON {
@@ -11,11 +12,22 @@ enum TAB_ICON {
   AllExpenses = 'calendar',
 }
 
-const stackNavigatorOptions = ({ route }: { route: any }) => {
+const stackNavigatorOptions = ({
+  route,
+  navigation,
+}: {
+  route: any;
+  navigation: any;
+}) => {
   console.log(route);
   const { name } = route;
   const routeIndex = Object.keys(TAB_ICON).indexOf(name);
   const iconName = Object.values(TAB_ICON)[routeIndex];
+
+  const onHeaderRightPress = () => {
+    console.log('PRESSED');
+    navigation.navigate('Manage Expense');
+  };
 
   return {
     headerStyle: { backgroundColor: theme.colors.primary },
@@ -26,6 +38,14 @@ const stackNavigatorOptions = ({ route }: { route: any }) => {
     tabBarActiveTintColor: theme.colors.accent,
     tabBarIcon: ({ color, size = 20 }: { color: string; size: number }) => (
       <Ionicons name={iconName} size={size} color={color} />
+    ),
+    headerRight: ({ tintColor }: { tintColor: string }) => (
+      <IconButton
+        icon='add'
+        size={24}
+        color={tintColor}
+        onPressHandler={onHeaderRightPress}
+      />
     ),
   };
 };
