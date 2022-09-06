@@ -24,7 +24,7 @@ export default ExpensesSummary;
 const styles = StyleSheet.create({
   container: {
     padding: 8,
-    backgroundColor: theme.colors.tertiary_lighter,
+    backgroundColor: theme.colors.error_lighter,
     borderRadius: 6,
     flexDirection: 'row',
     justifyContent: 'space-between',
