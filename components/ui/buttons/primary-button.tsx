@@ -2,23 +2,31 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { theme } from '../../../constants/theme';
 
 type ButtonProps = {
-  //text: string;
-  //rest of the props
+  mode?: string;
+  styleProp?: any;
+  onPressHandler?: (params: any) => any;
 };
 const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
-  const { btnInnerContainer, btnOutterContainer, btnPressed, btnText } = styles;
-  const onPressHandler = () => {
-    console.log('PRESSED!');
-  };
+  const {
+    btnInnerContainer,
+    btnOutterContainer,
+    btnPressed,
+    btnText,
+    flat,
+    flatText,
+  } = styles;
+
+  const { mode, styleProp, onPressHandler } = props;
+
   return (
-    <View style={btnOutterContainer}>
+    <View style={[btnOutterContainer, styleProp]}>
       <Pressable
-        style={({ pressed }) =>
-          pressed ? [btnInnerContainer, btnPressed] : btnInnerContainer
-        }
+        style={({ pressed }) => pressed && btnPressed}
         onPress={onPressHandler}
       >
-        <Text style={btnText}>{children}</Text>
+        <View style={[btnInnerContainer, mode === 'flat' && flat]}>
+          <Text style={[btnText, mode === 'flat' && flatText]}>{children}</Text>
+        </View>
       </Pressable>
     </View>
   );
@@ -36,7 +44,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     paddingHorizontal: 16,
     paddingVertical: 8,
-    elevation: 2,
   },
   btnText: {
     color: theme.colors.white,
@@ -44,5 +51,11 @@ const styles = StyleSheet.create({
   },
   btnPressed: {
     opacity: 0.75,
+  },
+  flat: {
+    backgroundColor: 'transparent',
+  },
+  flatText: {
+    color: theme.colors.primary_lighter,
   },
 });
