@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderRadius: 6,
     elevation: 3,
-    shadowColor: theme.colors.tertiary,
+    shadowColor: theme.colors.error,
     shadowRadius: 4,
     shadowOffset: {
       width: 1,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
   },
   itemText: {
-    color: theme.colors.tertiary_lighter,
+    color: theme.colors.error_lighter,
   },
   descriptionText: {
     fontSize: 16,
