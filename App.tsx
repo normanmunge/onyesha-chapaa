@@ -9,6 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import RecentExpensesScreen from './screens/expenses/recent';
 import ManageExpenseScreen from './screens/expenses/manage';
 import AppNavigator from './navigation/app.navigator';
+import ExpensesContextProvider from './store/expenses-context';
 
 // const Stack = createNativeStackNavigator();
 // const BottomTabs = createBottomTabNavigator();
@@ -31,8 +32,10 @@ export default function App() {
 
         <LoginScreen />
       ) : (
-        //user signed in
-        <AppNavigator />
+        <ExpensesContextProvider>
+          {/* //user signed in */}
+          <AppNavigator />
+        </ExpensesContextProvider>
       )}
     </>
   );
