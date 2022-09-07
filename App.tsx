@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style='auto' />
+      <StatusBar style='light' />
 
       {userToken ? ( //user not signed in
         // <Stack.Screen name='SignIn' component={LoginScreen} options={{}} />
