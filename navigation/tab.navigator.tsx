@@ -19,13 +19,11 @@ const stackNavigatorOptions = ({
   route: any;
   navigation: any;
 }) => {
-  console.log(route);
   const { name } = route;
   const routeIndex = Object.keys(TAB_ICON).indexOf(name);
   const iconName = Object.values(TAB_ICON)[routeIndex];
 
   const onHeaderRightPress = () => {
-    console.log('PRESSED');
     navigation.navigate('Manage Expense');
   };
 
