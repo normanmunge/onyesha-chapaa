@@ -33,6 +33,19 @@ const ManageExpenseScreen = ({
     navigation.goBack();
   };
   const confirmHandler = () => {
+    if (isEditing) {
+      expenseCtx.updateExpense(editedExpenseId, {
+        description: 'Test',
+        amount: 300,
+        date: new Date('2022-09-06'),
+      });
+    } else {
+      expenseCtx.addExpense({
+        description: 'Gifts',
+        amount: 3000,
+        date: new Date('2022-09-07'),
+      });
+    }
     navigation.goBack();
   };
 
