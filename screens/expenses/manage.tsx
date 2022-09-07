@@ -1,5 +1,6 @@
 import { useContext, useLayoutEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import ExpenseForm from '../../components/forms/manage';
 import IconButton from '../../components/ui/buttons/icon-button';
 import PrimaryButton from '../../components/ui/buttons/primary-button';
 import { theme } from '../../constants/theme';
@@ -51,6 +52,7 @@ const ManageExpenseScreen = ({
 
   return (
     <View style={container}>
+      <ExpenseForm />
       <View style={buttonsContainer}>
         <PrimaryButton
           mode='flat'
