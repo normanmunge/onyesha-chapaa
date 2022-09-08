@@ -7,7 +7,7 @@ const renderExpenseItem = (itemData: any) => {
 };
 
 interface listProps {
-  expenses?: any;
+  expenses?: any; //define the array property
 }
 const ExpensesList: React.FC<listProps> = ({ expenses }) => {
   return (

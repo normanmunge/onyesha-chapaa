@@ -3,7 +3,7 @@ import { theme } from '../../constants/theme';
 
 interface summaryProps {
   period?: string;
-  expenses?: any;
+  expenses?: any; //define the array property
 }
 const ExpensesSummary: React.FC<summaryProps> = ({ expenses, period }) => {
   const { container, periodText, sumText } = styles;

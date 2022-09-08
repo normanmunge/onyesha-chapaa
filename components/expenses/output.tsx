@@ -3,7 +3,7 @@ import { theme } from '../../constants/theme';
 import ExpensesList from './list';
 import ExpensesSummary from './summary';
 interface outputProps {
-  expenses?: any;
+  expenses?: any; //define the array property
   period?: string;
   fallbackText?: string;
 }

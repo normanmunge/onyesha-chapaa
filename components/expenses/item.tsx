@@ -8,7 +8,7 @@ interface expenseItemProps {
   description?: string;
   amount?: number;
   date?: Date;
-  id: any;
+  id: string | number;
 }
 
 const ExpenseItem: React.FC<expenseItemProps> = ({
