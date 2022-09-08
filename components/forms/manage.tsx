@@ -91,7 +91,7 @@ const ExpenseForm: React.FC<expenseFormProps> = ({
           amount: { value: currInputs.amount.value, isValid: amountIsValid },
           date: { value: currInputs.date.value, isValid: dateIsValid },
           description: {
-            value: currInputs.date.value,
+            value: currInputs.description.value,
             isValid: descripionIsValid,
           },
         };
