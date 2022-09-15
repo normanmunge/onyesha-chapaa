@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 
-const Singup = () => {
+const SingupScreen = () => {
   return (
     <View>
       <Text>This is the screen to signup a user</Text>
@@ -8,4 +8,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default SingupScreen;

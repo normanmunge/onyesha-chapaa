@@ -1,12 +1,7 @@
-import { View, TextInput, Text } from 'react-native';
-import PrimaryButton from '../../components/ui/buttons/primary-button';
+import AuthContent from '../../components/auth/AuthContent';
 
 function LoginScreen() {
-  return (
-    <View>
-      <PrimaryButton>LOGIN</PrimaryButton>
-    </View>
-  );
+  return <AuthContent isLogin />;
 }
 
 export default LoginScreen;

@@ -10,6 +10,7 @@ import RecentExpensesScreen from './screens/expenses/recent';
 import ManageExpenseScreen from './screens/expenses/manage';
 import AppNavigator from './navigation/app.navigator';
 import ExpensesContextProvider from './store/expenses-context';
+import Navigation from './navigation/auth.navigator';
 
 // const Stack = createNativeStackNavigator();
 // const BottomTabs = createBottomTabNavigator();
@@ -34,7 +35,8 @@ export default function App() {
       ) : (
         <ExpensesContextProvider>
           {/* //user signed in */}
-          <AppNavigator />
+          {/* <AppNavigator /> */}
+          <Navigation />
         </ExpensesContextProvider>
       )}
     </>
