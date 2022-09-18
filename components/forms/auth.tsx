@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { isValidNumber, isValidString } from '../../utils/validations';
 
 import PrimaryButton from '../ui/buttons/primary-button';
 import Input from '../ui/input';
@@ -16,25 +17,21 @@ const AuthForm: React.FC<authFormProps> = ({
   submitLabelProp,
   credentialsInvalid,
 }) => {
-  //   const [enteredEmail, setEnteredEmail] = useState('');
-  //   const [enteredConfirmEmail, setEnteredConfirmEmail] = useState('');
-  //   const [enteredPassword, setEnteredPassword] = useState('');
-  //     const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
 
   const [inputs, setInputs] = useState<any>({
-    enteredEmail: {
+    email: {
       value: '',
       isValid: true,
     },
-    enteredConfirmEmail: {
+    confirmEmail: {
       value: '',
       isValid: true,
     },
-    enteredPassword: {
+    password: {
       value: '',
       isValid: true,
     },
-    enteredConfirmPassword: {
+    confirmPassword: {
       value: '',
       isValid: true,
     },
@@ -46,26 +43,6 @@ const AuthForm: React.FC<authFormProps> = ({
     password: passwordinvalid,
     confirmPassword: passwordDontMatch,
   } = credentialsInvalid;
-
-  //   const updateInputValueHandler = (type: string, value: string) => {
-  //     switch (type) {
-  //       case 'email':
-  //         setEnteredEmail(value);
-  //         break;
-  //       case 'confirmEmail':
-  //         setEnteredEmail(value);
-  //         break;
-  //       case 'password':
-  //         setEnteredEmail(value);
-  //         break;
-  //       case 'confirmPassword':
-  //         setEnteredEmail(value);
-  //         break;
-
-  //       default:
-  //         break;
-  //     }
-  //   };
 
   const updateInputValueHandler = (
     inputIdentifier: string,
@@ -83,12 +60,51 @@ const AuthForm: React.FC<authFormProps> = ({
   };
 
   const submitHandler = () => {
-    onSubmit({
-      email: inputs.email.value,
-      confirmEmail: inputs.enteredConfirmEmail.value,
-      password: inputs.password.value,
-      confirmPassword: inputs.enteredConfirmPassword.value,
-    });
+
+    const { email, confirmEmail, password, confirmPassword } = inputs;
+
+    type authDataProps = {
+      email: string;
+      confirmEmail: string;
+      password: string;
+      confirmPassword: string;
+    };
+
+    const authData: authDataProps = {
+       email: email.value,
+      confirmEmail: confirmEmail.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value
+    };
+
+    //const phoneIsValid = isValidNumber(phone.value);
+    const emailIsValid = isValidString(email.value);
+    const confirmEmailIsValid = isValidString(email.value);
+    const passwordIsValid = isValidString(password.value);
+    const confirmPasswordIsValid = isValidString(password.value);
+
+    if (!emailIsValid || !passwordIsValid || (!isLogin && (!confirmEmailIsValid || !confirmPasswordIsValid))) {
+
+       setInputs((currInputs: any) => {
+        return {
+          email: { value: currInputs.email.value, isValid: emailIsValid },
+          confirmEmail: {
+            value: currInputs.confirmEmail.value,
+            isValid: confirmEmailIsValid
+          },
+          password: {
+            value: currInputs.password.value,
+            isValid: passwordIsValid,
+          },
+          confirmPassword: {
+            value: currInputs.confirmPassword.value,
+            isValid: confirmPasswordIsValid,
+          },
+        };
+      });
+      return;
+    }
+    onSubmit(authData);
   };
 
   let userStatusLabel = isLogin ? 'Log In' : 'Sign Up';
@@ -100,9 +116,9 @@ const AuthForm: React.FC<authFormProps> = ({
         inputConfig={{
           keyboadType: 'email-address',
           onChangeText: updateInputValueHandler.bind(this, 'email'), //binding enables executing a function at a future time
-          //value: inputs.enteredEmail.value,
+          value: inputs.email.value,
         }}
-        invalid={emailinvalid}
+        invalid={!inputs.email.isValid}
       />
       {!isLogin && (
         <Input
@@ -110,9 +126,9 @@ const AuthForm: React.FC<authFormProps> = ({
           inputConfig={{
             keyboadType: 'email-address',
             onChangeText: updateInputValueHandler.bind(this, 'confirmEmail'), //binding enables executing a function at a future time
-            // value: inputs.enteredConfirmEmail.value,
+            value: inputs.confirmEmail.value,
           }}
-          invalid={emailsDontMatch}
+          invalid={!inputs.confirmEmail.isValid}
         />
       )}
       <Input
@@ -120,9 +136,10 @@ const AuthForm: React.FC<authFormProps> = ({
         inputConfig={{
           keyboadType: 'secure',
           onChangeText: updateInputValueHandler.bind(this, 'password'), //binding enables executing a function at a future time
-          // value: inputs.enteredPassword.value,
+          secureTextEntry: true,
+          value: inputs.password.value,
         }}
-        invalid={emailinvalid}
+        invalid={!inputs.password.isValid}
       />
       {!isLogin && (
         <Input
@@ -130,9 +147,10 @@ const AuthForm: React.FC<authFormProps> = ({
           inputConfig={{
             keyboadType: 'secure',
             onChangeText: updateInputValueHandler.bind(this, 'confirmPassword'), //binding enables executing a function at a future time
-            // value: inputs.enteredConfirmPassword.value,
+            secureTextEntry: true,
+            value: inputs.confirmPassword.value,
           }}
-          //   invalid={emailsDontMatch}
+          invalid={!inputs.confirmPassword.isValid}
         />
       )}
       <View>
