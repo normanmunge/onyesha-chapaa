@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, Pressable, Text } from 'react-native';
 import AuthForm from '../forms/auth';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 interface authContentProps {
   isLogin?: boolean;
@@ -10,6 +12,8 @@ const AuthContent: React.FC<authContentProps> = ({
   isLogin,
   onAuthenticate,
 }) => {
+  const navigation = useNavigation();
+
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
     password: false,
@@ -19,7 +23,6 @@ const AuthContent: React.FC<authContentProps> = ({
 
   const submitHandler = (credentials: any) => {
     let { email, confirmEmail, password, confirmPassword } = credentials;
-    console.log('THE CREDENTIALS', credentials);
     email = email.trim();
     password = password.trim();
 
@@ -45,6 +48,23 @@ const AuthContent: React.FC<authContentProps> = ({
     onAuthenticate({ email, password });
   };
 
+  const switchAuthModeHandler = () => {
+    if(isLogin) {
+      navigation.reset({
+        index: 0,
+        routes: [{
+          name: 'Signup'
+        }]
+      })
+    } else {
+      navigation.reset({
+        index: 0,
+        routes: [{
+          name: 'Login'
+        }]
+      })
+    }
+  }
   return (
     <View>
       <AuthForm
@@ -52,6 +72,13 @@ const AuthContent: React.FC<authContentProps> = ({
         onSubmit={submitHandler}
         credentialsInvalid={credentialsInvalid}
       />
+      <View>
+        <Pressable onPress={switchAuthModeHandler}>
+          <Text>
+            {isLogin ? 'Create a new user' : 'Already have an account?'}
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
